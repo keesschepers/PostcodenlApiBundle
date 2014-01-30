@@ -1,7 +1,7 @@
 postcodenl_api:
     path: /get-postalcode-details
-    defaults: { _controller: KeesschepersPostcodenlApiBundle:Default:postalcodeCheck }
-    methods: ['GET']
+    defaults: { _controller: KeesschepersPostcodenlApiBundle:Default:index }
+    methods: [GET]
     requirements:
         zipcode:        "[0-9A-Za-z ]+"
         address-number: "[0-9A-Za-z ]+"

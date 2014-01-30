@@ -24,7 +24,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('base_url')
                     ->isRequired()
-                ->end
+                ->end()
                 ->scalarNode('timeout')
                     ->isRequired()
                 ->end()

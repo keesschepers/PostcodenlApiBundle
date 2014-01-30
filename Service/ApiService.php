@@ -1,6 +1,6 @@
 <?php
 
-namespace Keesschepers\PostcodenlApiBundle;
+namespace Keesschepers\PostcodenlApiBundle\Service;
 
 use Guzzle\Http\Client;
 
@@ -30,7 +30,7 @@ class ApiService
             array(
                 'request.options' => array(
                     'auth' => array($this->apiUser, $this->apiSecret, 'Any')
-                )
+                ),
                 'curl.options' => array(
                     'CURLOPT_CONNECTTIMEOUT_MS' => $this->timeout,
                     'CURLOPT_RETURNTRANSFER' => true,
@@ -42,7 +42,7 @@ class ApiService
             $this->baseUrl . '/%s/%s',
             $request->query->get('zipcode'),
             $request->query->get('address-number')
-        )
+        );
 
         $request = $this->client->get($url);
         $response = $request->send();
