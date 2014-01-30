@@ -2,6 +2,7 @@
     "name": "keesschepers/postcodenl-api-bundle",
     "type": "symfony-bundle",
     "description": "http://api.postcode.nl integration in Symfony2.",
+    "license": "MIT",
     "keywords": ["postcode", "postalcode", "rest", "symfony"],
     "authors": [
         {
@@ -19,5 +20,6 @@
             "Keesschepers\\PostcodenlApiBundle": ""
         }
     },
+    "target-dir": "Keesschepers/PostcodenlApiBundle",
     "minimum-stability": "dev"
 }
