@@ -1,0 +1,3 @@
+keesschepers_postcodenl_api:
+    base_url: https://api.postcode.nl/rest/addresses
+    timeout: 2000

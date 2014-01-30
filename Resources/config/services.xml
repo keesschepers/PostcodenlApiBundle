@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="keesschepers_postcodenl_api.api.class">Keesschepers\PostcodenlApiBundle\Service\ApiService</parameter>
+    </parameters>
+
+    <services>
+        <service id="keesschepers_postcodenl_api.client" class="Guzzle\Http\Client" public="false" />
+
+        <service id="keesschepers_postcodenl_api.api" class="%keesschepers_postcodenl_api.api.class%">
+            <argument type="service" id="keesschepers_postcodenl_api.client" />
+            <argument type="string">%keesschepers_postcodenl_api.url%</argument>
+            <argument type="string">%keesschepers_postcodenl_api.user%</argument>
+            <argument type="string">%keesschepers_postcodenl_api.secret%</argument>
+        </service>
+    </services>
+</container>
