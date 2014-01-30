@@ -11,12 +11,29 @@ class ApiService
      */
     private $client;
 
+    /**
+     * @var string
+     */
     private $apiUser;
 
+    /**
+     * @var string
+     */
     private $apiSecret;
 
+    /**
+     * @var integer
+     */
     private $timeout = 2000;
 
+    /**
+     * Constructor.
+     *
+     * @param \Guzzle\Http\Client $client
+     * @param string              $baseUrl
+     * @param string              $apiUser
+     * @param string              $apiSecret
+     */
     public function __construct(Client $client, $baseUrl, $apiUser, $apiSecret) {
         $this->client = $client;
         $this->baseUrl = $baseUrl;
@@ -24,13 +41,18 @@ class ApiService
         $this->apiSecret = $apiSecret;
     }
 
+    /**
+     * Get a array containing location information of the postalcode / housenr supplied.
+     *
+     * @param string $postalcode
+     * @param string $housenr
+     *
+     * @return array
+     */
     public function getResponseByPostcodeAndHousenumber($postalcode, $housenr)
     {
         $this->client->setConfig(
             array(
-                'request.options' => array(
-                    'auth' => array($this->apiUser, $this->apiSecret, 'Any')
-                ),
                 'curl.options' => array(
                     'CURLOPT_CONNECTTIMEOUT_MS' => $this->timeout,
                     'CURLOPT_RETURNTRANSFER' => true,
@@ -40,11 +62,15 @@ class ApiService
 
         $url = sprintf(
             $this->baseUrl . '/%s/%s',
-            $request->query->get('zipcode'),
-            $request->query->get('address-number')
+            $postalcode,
+            $housenr
         );
 
-        $request = $this->client->get($url);
+        $request = $this
+            ->client
+            ->get($url)
+            ->setAuth($this->apiUser, $this->apiSecret);
+
         $response = $request->send();
 
         return $response->json();
