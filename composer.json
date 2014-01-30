@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Keesschepers\PostcodenlApiBundle\\": ""
+            "Keesschepers\\PostcodenlApiBundle": ""
         }
     },
     "minimum-stability": "dev"
