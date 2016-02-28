@@ -28,6 +28,8 @@ Second, add the bundle to your AppKernel.php:
 Third, you need to configure the bundle by adding the following to your config.yml:
 
     keesschepers_postcodenl_api:
+        base_url: "https://api.postcode.nl/rest/addresses"
+        timeout: 5
         api_user: %keesschepers_postcodenl_api.api_user%
         api_secret: %keesschepers_postcodenl_api.api_secret%
 
